@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
         return view("posts.index")->with('posts', $post->paginateByLimit());
-
+        
     }
 
     public function show(Post $post)
@@ -23,5 +24,12 @@ class PostController extends Controller
     {
         return view("posts.create");
 
+    }
+    
+    public function store(Post $post, PostRequest $request)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect("/posts/{$post->id}");
     }
 }

@@ -10,4 +10,9 @@ class Post extends Model
     {
         return $this->orderBy('updated_at', 'desc')->paginate($limit_count);
     }
+    
+    protected $fillable = [
+        'title',
+        'body',
+    ];
 }
