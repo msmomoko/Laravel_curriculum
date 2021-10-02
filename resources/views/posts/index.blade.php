@@ -15,5 +15,6 @@
             @endforeach
     　  </div>
     　   {{ $posts->links() }}
+    　   [<a href='/posts/create'>create</a>]
     </body>
 </html>
